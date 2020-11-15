@@ -1,4 +1,4 @@
-package com.mouscorp.moovies
+package com.mouscorp.mousvies
 
 import org.junit.Test
 

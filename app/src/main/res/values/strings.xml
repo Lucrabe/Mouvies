@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Moovies</string>
+    <string name="app_name"> Mousvies </string>
+    <string name="title_home"> Accueil </string>
+    <string name="title_genre"> Genres </string>
+    <string name="title_search"> Recherche </string>
+    <string name="action"><b><u> Action : </u></b></string>
+    <string name="title"><b><u> "VARIABLE TITRE FILM" </u></b></string>
+    <string name="realisateur"><b><u> Réalisateur : </u></b></string>
+    <string name="acteurs"><b><u> Acteurs : </u></b></string>
+    <string name="description"><b><u> Description : </u></b></string>
+    <string name="img_desc"> "variable_nom_img" </string>
+    <string name="last_search"><b><u> Dernières recherches : </u></b></string>
 </resources>
