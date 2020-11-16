@@ -28,6 +28,9 @@ class DashboardFragment : Fragment() {
     lateinit var movieSearchDiscoverRecyclerView : RecyclerView
     lateinit var movieRecyclerViewAdapter : MovieRecyclerViewAdapter
     lateinit var movieList : ArrayList<Movie>
+    lateinit var movieSearchDiscoverRecyclerView2 : RecyclerView
+    lateinit var movieRecyclerViewAdapter2 : MovieRecyclerViewAdapter
+    lateinit var movieList2 : ArrayList<Movie>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +49,8 @@ class DashboardFragment : Fragment() {
 
         val movieService : MovieService = retrofit.create(MovieService::class.java)
         val call : Call<SearchDiscoverResponse> = movieService.genreMovies(MainActivity.SECRET_API_KEY, "28")
+        val call2 : Call<SearchDiscoverResponse> = movieService.genreMovies(MainActivity.SECRET_API_KEY, "18")
+        val call3 : Call<SearchDiscoverResponse> = movieService.genreMovies(MainActivity.SECRET_API_KEY, "14")
 
         call.enqueue(
             object : Callback<SearchDiscoverResponse>{
@@ -72,6 +77,39 @@ class DashboardFragment : Fragment() {
                         this@DashboardFragment, movieList
                     )
                     movieSearchDiscoverRecyclerView.adapter = movieRecyclerViewAdapter
+                }
+
+                override fun onFailure(call: Call<SearchDiscoverResponse>, t: Throwable) {
+                    Toast.makeText(activity!!.applicationContext, t.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+
+        call2.enqueue(
+            object : Callback<SearchDiscoverResponse>{
+                override fun onResponse(
+                    call: Call<SearchDiscoverResponse>,
+                    response: Response<SearchDiscoverResponse>
+                ) {
+                    if(!response.isSuccessful){
+                        Toast.makeText(activity!!.applicationContext,response.code(),Toast.LENGTH_SHORT).show()
+                        return;
+                    }
+
+                    movieSearchDiscoverRecyclerView2 = root.findViewById(R.id.activity_main_recycler_2)!!
+                    val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                    movieSearchDiscoverRecyclerView2.layoutManager = linearLayoutManager
+
+                    val searchDiscoverResponse2 : SearchDiscoverResponse? = response.body()
+                    checkNotNull(searchDiscoverResponse2)
+                    movieList2 = searchDiscoverResponse2.results
+
+                    Log.v("searchDiscoverResponse", searchDiscoverResponse2.toString())
+
+                    movieRecyclerViewAdapter2 = MovieRecyclerViewAdapter(
+                        this@DashboardFragment, movieList2
+                    )
+                    movieSearchDiscoverRecyclerView2.adapter = movieRecyclerViewAdapter2
                 }
 
                 override fun onFailure(call: Call<SearchDiscoverResponse>, t: Throwable) {

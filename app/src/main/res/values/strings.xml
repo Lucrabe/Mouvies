@@ -4,6 +4,8 @@
     <string name="title_genre"> Genres </string>
     <string name="title_search"> Recherche </string>
     <string name="action"><b><u>Action :</u></b></string>
+    <string name="drame"><b><u>Drame :</u></b></string>
+    <string name="fiction"><b><u>Fiction :</u></b></string>
     <string name="title"><b><u> "VARIABLE TITRE FILM" </u></b></string>
     <string name="realisateur"><b><u> Réalisateur : </u></b></string>
     <string name="acteurs"><b><u> Acteurs : </u></b></string>
