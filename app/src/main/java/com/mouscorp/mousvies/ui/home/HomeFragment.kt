@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mouscorp.mousvies.MainActivity
 import com.mouscorp.mousvies.R
 import com.mouscorp.mousvies.api.adapter.MovieDetailsRecyclerViewAdapter
+import com.mouscorp.mousvies.api.adapter.MoviePopularRecyclerViewAdapter
 import com.mouscorp.mousvies.api.adapter.MovieRecyclerViewAdapter
 import com.mouscorp.mousvies.api.models.Movie
 import com.mouscorp.mousvies.api.models.MovieDetails
@@ -29,8 +30,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-    lateinit var movieDetailsRecyclerView : RecyclerView
-    lateinit var movieDetailsRecyclerViewAdapter : MovieDetailsRecyclerViewAdapter
+    lateinit var moviePopularRecyclerView : RecyclerView
+    lateinit var moviePopularRecyclerViewAdapter : MoviePopularRecyclerViewAdapter
+    lateinit var movieList : ArrayList<Movie>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -52,35 +54,36 @@ class HomeFragment : Fragment() {
             .build()
 
         val movieService : MovieService = retrofit.create(MovieService::class.java)
-        val call : Call<MovieDetails> = movieService.movieDetails(724989, MainActivity.SECRET_API_KEY)
+        val call : Call<SearchDiscoverResponse> = movieService.mostPopularMovies(MainActivity.SECRET_API_KEY)
 
         call.enqueue(
-            object : Callback<MovieDetails>{
+            object : Callback<SearchDiscoverResponse>{
                 override fun onResponse(
-                    call: Call<MovieDetails>,
-                    response: Response<MovieDetails>
+                    call: Call<SearchDiscoverResponse>,
+                    response: Response<SearchDiscoverResponse>
                 ) {
                     if(!response.isSuccessful){
                         Toast.makeText(activity!!.applicationContext,response.code(),Toast.LENGTH_SHORT).show()
                         return;
                     }
 
-                    movieDetailsRecyclerView = root.findViewById(R.id.fragment_home_recycler)!!
+                    moviePopularRecyclerView = root.findViewById(R.id.fragment_home_recycler)!!
                     val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                    movieDetailsRecyclerView.layoutManager = linearLayoutManager
+                    moviePopularRecyclerView.layoutManager = linearLayoutManager
 
-                    val movieDetails : MovieDetails? = response.body()
-                    checkNotNull(movieDetails)
+                    val searchDiscoverResponse : SearchDiscoverResponse? = response.body()
+                    checkNotNull(searchDiscoverResponse)
+                    movieList = searchDiscoverResponse.results
 
-                    Log.v("searchDiscoverResponse", movieDetails.toString())
+                    Log.v("searchDiscoverResponse", searchDiscoverResponse.toString())
 
-                    movieDetailsRecyclerViewAdapter = MovieDetailsRecyclerViewAdapter(
-                        this@HomeFragment, movieDetails
+                    moviePopularRecyclerViewAdapter = MoviePopularRecyclerViewAdapter(
+                        this@HomeFragment, movieList
                     )
-                    movieDetailsRecyclerView.adapter = movieDetailsRecyclerViewAdapter
+                    moviePopularRecyclerView.adapter = moviePopularRecyclerViewAdapter
                 }
 
-                override fun onFailure(call: Call<MovieDetails>, t: Throwable) {
+                override fun onFailure(call: Call<SearchDiscoverResponse>, t: Throwable) {
                     Toast.makeText(activity!!.applicationContext, t.message, Toast.LENGTH_SHORT).show()
                 }
             }
