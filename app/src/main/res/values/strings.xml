@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name"> Mousvies </string>
+    <string name="title_home"> Accueil </string>
+    <string name="title_genre"> Genres </string>
+    <string name="title_search"> Recherche </string>
+    <string name="action"><b><u>Action :</u></b></string>
+    <string name="title"><b><u> "VARIABLE TITRE FILM" </u></b></string>
+    <string name="realisateur"><b><u> Réalisateur : </u></b></string>
+    <string name="acteurs"><b><u> Acteurs : </u></b></string>
+    <string name="description"><b><u>Description :</u></b></string>
+    <string name="img_desc"> "variable_nom_img" </string>
+    <string name="last_search"><b><u>Dernières recherches :</u></b></string>
+    <string name="result_search"><b><u>Résultat de votre recherche :</u></b></string>
+    <string name="accueil"><b><u>Bienvenue sur l\'application Mousvies !</u></b></string>
+    <string name="text_accueil"> Tu te trouves actuellement sur la page d\'accueil de Mousvies où sont affichés les films les plus populaires. N\'hésite pas à te balader sur l\'application et à nous noter sur le PlayStore ! </string>
+</resources>
