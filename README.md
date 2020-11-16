@@ -10,7 +10,9 @@ Cette application utilise l'api de [The Movie Database](https://www.themoviedb.o
 
 * Activity et Fragment
 * Utilisation d'une Api externe
-* Retrofit 2, okHttp, Picasso (rendu des images de l'api) et Kotlin Coroutines
+* Retrofit 2, okHttp 
+* Picasso (rendu des images de l'api) 
+* Kotlin Coroutines
 * RecyclerView pour l'affichage des éléments de l'api
 * Search View : barre de recherche
 * Bonne architecture du code respectant la POO
@@ -41,9 +43,14 @@ Durant ces quelques semaines de travail, nous avons chacun eu à rencontrer des 
 * Gérer la navigation des menus et d'afficher la vue correspondante avec les données
 * Réussir à faire le pont entre la vue et les données
 * Réussir à ne pas trop galérer sur la compatibilité des codes de chacun sans qu'il ait trop de bugs
-* Réussir à préparer des fonctions qui font appel à différentes requêtes qu'on pourraient utiliser plutard
+* Réussir à préparer des fonctions qui font appel à différentes requêtes qu'on pourraient utiliser plus tard
 * Réussir à avoir une structure pouvant être utiliser dans différentes fonctions
 * Gagner le soutien de toute l'équipe toujours disponible pour aider les uns des autres
+
+## Là où on s'est loupé
+Même dans les meilleurs projets, certains points ne sont pas bien aboutis. Dans notre cas, nous n'avons pas  :
+* Gérer les Shared Preferences (nous souhaiterions pouvoir enregistrer les derniers recherches que l'utilisateur a effectué)
+* Bien gérer idéalement l'appel des requêtes de l'api, on se retrouve avec plusieurs lignes de codes avec de la redondance
 
 ## 🚀 Alors on se lance !!!
 
