@@ -37,7 +37,7 @@ class MovieDetailsRecyclerViewAdapter(
         var movieDesc : String? = currentMovie.overview
 
         holder.movieTitle.text = movieTitle
-        holder.movieNote.text = movieNote.toString()
+        holder.movieNote.text = "Note : "+movieNote.toString()+" /10"
         holder.movieDescription.text = movieDesc
         // Affiche en ligne de commande url de l'image
         Log.v("imagePath", movieImagePath)

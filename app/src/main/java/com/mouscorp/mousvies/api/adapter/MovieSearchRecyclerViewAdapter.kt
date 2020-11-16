@@ -49,7 +49,7 @@ class MovieSearchRecyclerViewAdapter(
 
 
         holder.movieTitle.text = movieTitle
-        holder.movieAverage.text = movieNote.toString()
+        holder.movieAverage.text = "Note : "+movieNote.toString()+" /10"
         holder.movieId.text = movieId.toString()
         // Affiche en ligne de commande url de l'image
         Log.v("imagePath", movieImagePath)

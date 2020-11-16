@@ -1,10 +1,12 @@
 package com.mouscorp.mousvies.api.adapter
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mouscorp.mousvies.DescriptionActivity
 import com.mouscorp.mousvies.R
 import com.mouscorp.mousvies.api.models.Movie
 import com.mouscorp.mousvies.ui.dashboard.DashboardFragment
@@ -41,7 +43,7 @@ class MovieRecyclerViewAdapter(
         var movieNote : Number = currentMovie.vote_average
 
         holder.movieTitle.text = movieTitle
-        holder.movieNote.text = movieNote.toString()
+        holder.movieNote.text = "Note : "+movieNote.toString()+" /10"
         // Affiche en ligne de commande url de l'image
         Log.v("imagePath", movieImagePath)
 
@@ -53,6 +55,12 @@ class MovieRecyclerViewAdapter(
             .centerInside()
             .into(holder.movieImage)
 
+        holder.movieImage.setOnClickListener(View.OnClickListener {
+            val intent: Intent = Intent(context.activity, DescriptionActivity::class.java).apply {
+                putExtra("MovieId", currentMovie.id)
+            }
+            context.startActivity(intent)
+        })
     }
 
     @Override
