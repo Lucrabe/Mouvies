@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mouscorp.mousvies.DescriptionActivity
 import com.mouscorp.mousvies.R
 import com.mouscorp.mousvies.api.models.MovieDetails
-import com.mouscorp.mousvies.ui.home.HomeFragment
 import com.mouscorp.mousvies.view.MovieDetailsViewHolder
 import com.squareup.picasso.Picasso
 
 class MovieDetailsRecyclerViewAdapter(
-    private val context: HomeFragment,
+    private val context: DescriptionActivity,
     private val movieDetails: MovieDetails?
 ): RecyclerView.Adapter<MovieDetailsViewHolder>() {
 

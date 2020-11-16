@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mouscorp.mousvies.api.adapter.MovieDetailsAdapter
+import com.mouscorp.mousvies.api.adapter.MovieDetailsRecyclerViewAdapter
 import com.mouscorp.mousvies.api.models.MovieDetails
 import com.mouscorp.mousvies.api.service.MovieService
 import retrofit2.Call
@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DescriptionActivity : AppCompatActivity() {
 
     lateinit var movieDetailsRecyclerView : RecyclerView
-    lateinit var movieDetailsRecyclerViewAdapter : MovieDetailsAdapter
+    lateinit var movieDetailsRecyclerViewAdapter : MovieDetailsRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +58,7 @@ class DescriptionActivity : AppCompatActivity() {
 
                     Log.v("searchDiscoverResponse", movieDetails.toString())
 
-                    movieDetailsRecyclerViewAdapter = MovieDetailsAdapter(
+                    movieDetailsRecyclerViewAdapter = MovieDetailsRecyclerViewAdapter(
                         this@DescriptionActivity, movieDetails
                     )
                     movieDetailsRecyclerView.adapter = movieDetailsRecyclerViewAdapter
