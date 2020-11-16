@@ -16,11 +16,9 @@ import com.mouscorp.mousvies.api.adapter.MovieRecyclerViewAdapter
 import com.mouscorp.mousvies.api.models.Movie
 import com.mouscorp.mousvies.api.models.SearchDiscoverResponse
 import com.mouscorp.mousvies.api.service.MovieService
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlinx.android.synthetic.main.fragment_genre.*
 import retrofit2.Callback
 import retrofit2.Response
 
@@ -39,6 +37,17 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
+        val root = inflater.inflate(R.layout.fragment_genre, container, false)
+        /*  val textView: TextView = root.findViewById(R.id.text_dashboard)
+          dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+              textView.text = it
+          }) */
+        return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         val retrofit : Retrofit = Retrofit.Builder()
             .baseUrl(MovieService.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -46,20 +55,20 @@ class DashboardFragment : Fragment() {
 
         val movieService : MovieService = retrofit.create(MovieService::class.java)
         val call : Call<SearchDiscoverResponse> = movieService.mostPopularMovies(MainActivity.SECRET_API_KEY)
-        val list = inflater.inflate(R.layout.fragment_genre, container, false)
-        movieSearchDiscoverRecyclerView = list.findViewById(R.id.activity_main_recycler) as RecyclerView
 
-        val linearLayoutManager = LinearLayoutManager(this.activity, LinearLayoutManager.HORIZONTAL, false)
+        movieSearchDiscoverRecyclerView = activity?.findViewById(R.id.activity_main_recycler)!!
+
+        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         movieSearchDiscoverRecyclerView.layoutManager = linearLayoutManager
 
         call.enqueue(
-            object : Callback<SearchDiscoverResponse> {
+            object : Callback<SearchDiscoverResponse>{
                 override fun onResponse(
                     call: Call<SearchDiscoverResponse>,
                     response: Response<SearchDiscoverResponse>
                 ) {
                     if(!response.isSuccessful){
-                        Toast.makeText(activity?.applicationContext,response.code(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity!!.applicationContext,response.code(),Toast.LENGTH_SHORT).show()
                         return;
                     }
 
@@ -69,24 +78,19 @@ class DashboardFragment : Fragment() {
 
                     Log.v("searchDiscoverResponse", searchDiscoverResponse.toString())
 
-
                     movieRecyclerViewAdapter = MovieRecyclerViewAdapter(
-                        this@DashboardFragment.container.context, movieList
+                        this@DashboardFragment, movieList
                     )
                     movieSearchDiscoverRecyclerView.adapter = movieRecyclerViewAdapter
                 }
 
                 override fun onFailure(call: Call<SearchDiscoverResponse>, t: Throwable) {
-                    Toast.makeText(activity?.applicationContext, t.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity!!.applicationContext, t.message, Toast.LENGTH_SHORT).show()
                 }
             }
         )
 
-        val root = inflater.inflate(R.layout.fragment_genre, container, false)
-        /*  val textView: TextView = root.findViewById(R.id.text_dashboard)
-          dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-              textView.text = it
-          }) */
-        return root
     }
+
+
 }
