@@ -1,6 +1,5 @@
 package com.mouscorp.mousvies.api.adapter
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,7 @@ import com.mouscorp.mousvies.view.MovieViewHolder
 import com.squareup.picasso.Picasso
 
 class MovieRecyclerViewAdapter(
-    private val context: Context,
+    private val context: DashboardFragment,
     private val movieList: ArrayList<Movie>
 ): RecyclerView.Adapter<MovieViewHolder>(){
 
@@ -24,7 +23,7 @@ class MovieRecyclerViewAdapter(
     // Cree une vue de film
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         // Retourne une vue basee pour la recherche de film
-        val v : View = LayoutInflater.from(context).inflate(R.layout.fragment_movie, parent, false)
+        val v : View = LayoutInflater.from(parent.context).inflate(R.layout.fragment_movie, parent, false)
         return MovieViewHolder(v)
     }
 
