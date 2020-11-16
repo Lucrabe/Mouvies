@@ -54,7 +54,7 @@ class DashboardFragment : Fragment() {
             .build()
 
         val movieService : MovieService = retrofit.create(MovieService::class.java)
-        val call : Call<SearchDiscoverResponse> = movieService.mostPopularMovies(MainActivity.SECRET_API_KEY)
+        val call : Call<SearchDiscoverResponse> = movieService.genreMovies(MainActivity.SECRET_API_KEY, "28")
 
         movieSearchDiscoverRecyclerView = activity?.findViewById(R.id.activity_main_recycler)!!
 

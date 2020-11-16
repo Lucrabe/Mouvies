@@ -9,5 +9,9 @@
     <string name="acteurs"><b><u> Acteurs : </u></b></string>
     <string name="description"><b><u> Description : </u></b></string>
     <string name="img_desc"> "variable_nom_img" </string>
+    <string name="bienvenue"><b><u> Bienvenue à vous sur l\'application Mousvies ! </u></b></string>
+    <string name="desc_accueil"> Sur notre page d\'accueil vous retrouverez les films et séries les plus populaires. Profitez au maximum de l\'application Mousvies et n\'oubliez pas de nous noter sur le PlayStore ! </string>
     <string name="last_search"><b><u> Dernières recherches : </u></b></string>
+    <string name="populaires_film"><b><u> Films les plus populaires : </u></b></string>
+    <string name="populaires_serie"><b><u> Séries les plus populaires : </u></b></string>
 </resources>

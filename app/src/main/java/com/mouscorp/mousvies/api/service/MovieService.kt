@@ -39,8 +39,7 @@ interface MovieService {
     @GET("discover/movie?language=fr-FR")
     fun genreMovies(@Query("api_key") api_key : String, @Query("with_genres") with_genres : String) : Call<SearchDiscoverResponse>
 
-    fun actionMovies() : Call<SearchDiscoverResponse>{
+    /*fun actionMovies() : Call<SearchDiscoverResponse>{
         return genreMovies(MainActivity.SECRET_API_KEY, "28")
-    }
-
+    }*/
 }

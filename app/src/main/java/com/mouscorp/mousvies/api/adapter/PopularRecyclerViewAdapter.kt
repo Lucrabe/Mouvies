@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mouscorp.mousvies.R
 import com.mouscorp.mousvies.api.models.Movie
-import com.mouscorp.mousvies.ui.dashboard.DashboardFragment
+import com.mouscorp.mousvies.ui.home.HomeFragment
 import com.mouscorp.mousvies.view.MovieViewHolder
 import com.squareup.picasso.Picasso
 
-class MovieRecyclerViewAdapter(
-    private val context: DashboardFragment,
+class PopularRecyclerViewAdapter(
+    private val context: HomeFragment,
     private val movieList: ArrayList<Movie>
 ): RecyclerView.Adapter<MovieViewHolder>(){
 

@@ -11,14 +11,17 @@
         android:id="@+id/Linear_dashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/border_bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <CheckBox
             android:id="@+id/checkboxSeries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:checked="true"
             android:text="Séries"
@@ -28,7 +31,7 @@
             android:id="@+id/checkboxFilms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="100dp"
             android:layout_weight="1"
             android:checked="true"
@@ -36,15 +39,23 @@
             android:buttonTint="@color/marron_menu"/>
     </LinearLayout>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/action"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/activity_main_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 </LinearLayout>
