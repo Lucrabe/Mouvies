@@ -38,15 +38,6 @@ class DashboardFragment : Fragment() {
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_genre, container, false)
-        /*  val textView: TextView = root.findViewById(R.id.text_dashboard)
-          dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-              textView.text = it
-          }) */
-        return root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         val retrofit : Retrofit = Retrofit.Builder()
             .baseUrl(MovieService.BASE_URL)
@@ -55,11 +46,6 @@ class DashboardFragment : Fragment() {
 
         val movieService : MovieService = retrofit.create(MovieService::class.java)
         val call : Call<SearchDiscoverResponse> = movieService.mostPopularMovies(MainActivity.SECRET_API_KEY)
-
-        movieSearchDiscoverRecyclerView = activity?.findViewById(R.id.activity_main_recycler)!!
-
-        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        movieSearchDiscoverRecyclerView.layoutManager = linearLayoutManager
 
         call.enqueue(
             object : Callback<SearchDiscoverResponse>{
@@ -71,6 +57,10 @@ class DashboardFragment : Fragment() {
                         Toast.makeText(activity!!.applicationContext,response.code(),Toast.LENGTH_SHORT).show()
                         return;
                     }
+
+                    movieSearchDiscoverRecyclerView = root.findViewById(R.id.activity_main_recycler)!!
+                    val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                    movieSearchDiscoverRecyclerView.layoutManager = linearLayoutManager
 
                     val searchDiscoverResponse : SearchDiscoverResponse? = response.body()
                     checkNotNull(searchDiscoverResponse)
@@ -90,6 +80,15 @@ class DashboardFragment : Fragment() {
             }
         )
 
+        /*  val textView: TextView = root.findViewById(R.id.text_dashboard)
+          dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+              textView.text = it
+          }) */
+        return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
     }
 
 

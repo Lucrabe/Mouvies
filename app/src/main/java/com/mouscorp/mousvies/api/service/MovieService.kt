@@ -1,10 +1,7 @@
 package com.mouscorp.mousvies.api.service
 
 import com.mouscorp.mousvies.MainActivity
-import com.mouscorp.mousvies.api.models.Genre
-import com.mouscorp.mousvies.api.models.MovieDetails
-import com.mouscorp.mousvies.api.models.SearchDiscoverResponse
-import com.mouscorp.mousvies.api.models.SerieDetails
+import com.mouscorp.mousvies.api.models.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -28,7 +25,7 @@ interface MovieService {
     fun serieDetails(@Query("api_key") api_key: String, @Path("tv_id") tv_id : Int) : Call<SerieDetails>
 
     @GET("movie/{movie_id}?language=fr-FR")
-    fun movieDetails(@Query("api_key") api_key: String, @Path("movie_id") movie_id : Int) : Call<MovieDetails>
+    fun movieDetails(@Path("movie_id") movie_id : Int, @Query("api_key") api_key: String) : Call<MovieDetails>
 
     @GET("movie/popular?language=fr-FR")
     fun mostPopularMovies(@Query("api_key") api_key: String) : Call<SearchDiscoverResponse>
@@ -38,6 +35,9 @@ interface MovieService {
 
     @GET("discover/movie?language=fr-FR")
     fun genreMovies(@Query("api_key") api_key : String, @Query("with_genres") with_genres : String) : Call<SearchDiscoverResponse>
+
+    @GET("movie/{movie_id}/reviews?language=fr-FR")
+    fun getReviews(@Query("api_key") api_key: String, @Path("movie_id") movie_id : Int) : Call<Review>
 
     fun actionMovies() : Call<SearchDiscoverResponse>{
         return genreMovies(MainActivity.SECRET_API_KEY, "28")

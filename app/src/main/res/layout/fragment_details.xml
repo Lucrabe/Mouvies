@@ -23,7 +23,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_home_recycler"
+            android:id="@+id/fragment_details_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

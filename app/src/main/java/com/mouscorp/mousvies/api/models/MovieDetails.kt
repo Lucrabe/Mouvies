@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 // On peut utiliser les annotations comme ci-dessous ou alors les data class
 class MovieDetails (
+    @SerializedName("id") var id : Int,
     @SerializedName("title") var title : String,
     @SerializedName("original_title") var originalTitle : String,
     @SerializedName("budget") var budget : Int,
@@ -17,9 +18,7 @@ class MovieDetails (
     @SerializedName("spoken_languages") var spoken_languages : List<SpokenLanguage>,
     @SerializedName("revenue") var revenue : Int,
     @SerializedName("genres") var genres : List<Genre>,
-    @SerializedName("release_date") var release_date : String,
-    @SerializedName("production_countries") var production_countries : Int,
-    @SerializedName("production_companies") var production_companies : Int
+    @SerializedName("release_date") var release_date : String
 ){
 
 }

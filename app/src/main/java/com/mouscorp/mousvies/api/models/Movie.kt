@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 // Annotation similaire a Symfony ou dans .Net
 class Movie (
-    @SerializedName("id") @Expose var id: String,
+    @SerializedName("id") @Expose var id: Int,
     @SerializedName("title") @Expose var title: String,
     @SerializedName("poster_path") @Expose var posterPath: String,
     @SerializedName("backdrop_path") @Expose var backdropPath: String,

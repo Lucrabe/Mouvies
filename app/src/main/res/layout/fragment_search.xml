@@ -8,12 +8,13 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
     <SearchView
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/search_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -22,8 +23,9 @@
         android:text="@string/last_search" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/search_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
@@ -50,4 +52,17 @@
             android:layout_weight="1"
             tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_search_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
 </LinearLayout>
