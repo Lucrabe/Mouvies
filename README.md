@@ -84,4 +84,4 @@ https://github.com/Lucrabe/Mouvies.git
 * Lucas Tichet
 ####  Encadrante
 * Macha Da Costa
-	* Toutes nos remerciements à notre encadrante de nous avoir soutenu et d'être présente dans la bonne réussite de notre projet. également, nous souhaitons lui remercier de nous avoir mis à profit de ses connaissances dans le développement mobile qui nous servirons très certainement.
+	* Toutes nos remerciements à notre encadrante de nous avoir soutenu et d' avoir été présente dans la bonne réussite de notre projet. Egalement, nous souhaitons lui remercier de nous avoir mis à profit ses connaissances dans le développement mobile qui nous servirons très certainement.
